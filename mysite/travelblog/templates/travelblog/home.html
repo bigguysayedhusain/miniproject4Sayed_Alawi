@@ -1,0 +1,58 @@
+{% extends 'travelblog/base.html' %}
+
+{% block title %}Home - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+    <!-- Bootstrap Accordion -->
+    <div class="accordion" id="accordionCountries">
+        {% for country in countries %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ country.name }}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ country.name }}" aria-expanded="true" aria-controls="collapse{{ country.name }}">
+                    {{ country.name }}
+                </button>
+            </h2>
+            <div id="collapse{{ country.name }}" class="accordion-collapse collapse" aria-labelledby="heading{{ country.name }}" data-bs-parent="#accordionCountries">
+                <div class="accordion-body">
+                    <!-- Nested accordion for cities -->
+                    <div class="accordion" id="accordion{{ country.name }}Cities">
+                        {% for city in country.cities %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ city.name }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ city.name }}" aria-expanded="false" aria-controls="collapse{{ city.name }}">
+                                    {{ city.name }}
+                                </button>
+                            </h2>
+                            <div id="collapse{{ city.name }}" class="accordion-collapse collapse" aria-labelledby="heading{{ city.name }}" data-bs-parent="#accordion{{ country.name }}Cities">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h5>Posts</h5>
+                                            <ul>
+                                                {% for post in city.posts %}
+                                                <li>{{ post.title }} by {{ post.author }} on {{ post.publish_date }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Activities</h5>
+                                            <ul>
+                                                {% for activity in city.activities %}
+                                                <li>{{ activity.name }} at {{ activity.location }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

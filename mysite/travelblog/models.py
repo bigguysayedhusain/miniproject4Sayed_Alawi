@@ -24,7 +24,7 @@ class Post(models.Model):
     content = models.TextField()
     images = models.ImageField(upload_to='posts_images/', blank=True, null=True)
     location = models.CharField(max_length=200)
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='posts')
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     tags = models.CharField(max_length=100, blank=True)
 
@@ -39,7 +39,7 @@ class Activity(models.Model):
     cost = models.DecimalField(max_digits=6, decimal_places=2)
     location = models.CharField(max_length=200)
     suitability = models.CharField(max_length=200)
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='activities')
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='activities_images/', blank=True, null=True)
 

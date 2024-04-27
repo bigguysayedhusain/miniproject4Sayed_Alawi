@@ -8,8 +8,30 @@
     <title>{% block title %}Travel Blog{% endblock %}</title>
 </head>
 <body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">Travel Blog</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Register</a> {# TODO {% url 'register' %} #}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sign In</a> {# TODO {% url 'login' %} #}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content block where page-specific content will be loaded -->
     {% block content %}
     {% endblock %}
+
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
