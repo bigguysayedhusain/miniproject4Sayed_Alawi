@@ -1,5 +1,10 @@
 from django.views.generic import TemplateView
+from django.views.generic.detail import DetailView
 from django.db.models import Exists, OuterRef
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login as auth_login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Country, City, Post, Activity
 
 
@@ -38,3 +43,38 @@ class HomeView(TemplateView):
 
         context['countries'] = country_city_data
         return context
+
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'travelblog/post_detail.html'
+    context_object_name = 'post'
+
+
+class ActivityDetailView(DetailView):
+    model = Activity
+    template_name = 'travelblog/activity_detail.html'
+    context_object_name = 'activity'
+
+
+class MyHomeView(LoginRequiredMixin, TemplateView):
+    template_name = 'travelblog/myhome.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        context['posts'] = Post.objects.filter(author=user)
+        context['activities'] = Activity.objects.filter(author=user)
+        return context
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)  # Log the user in
+            return redirect('home')  # Redirect to home page after registration
+    else:
+        form = UserCreationForm()
+    return render(request, 'travelblog/registration/register.html', {'form': form})

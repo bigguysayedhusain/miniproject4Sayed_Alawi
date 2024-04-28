@@ -1,0 +1,28 @@
+{% extends 'travelblog/base.html' %}
+
+{% block title %}My Home - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Your Posts</h2>
+            <a href="#" class="btn btn-primary">Add Post</a> {# TODO {% url 'add_post' %} #}
+            <ul>
+                {% for post in posts %}
+                <li>{{ post.title }} - <a href="{% url 'edit_post' post.id %}">Edit</a> | <a href="{% url 'delete_post' post.id %}">Delete</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h2>Your Activities</h2>
+            <a href="#" class="btn btn-primary">Add Activity</a> {# TODO {% url 'add_activity' %} #}
+            <ul>
+                {% for activity in activities %}
+                <li>{{ activity.name }} - <a href="{% url 'edit_activity' activity.id %}">Edit</a> | <a href="{% url 'delete_activity' activity.id %}">Delete</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

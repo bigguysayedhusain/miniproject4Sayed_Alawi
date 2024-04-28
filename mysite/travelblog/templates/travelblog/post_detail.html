@@ -1,0 +1,25 @@
+{% extends 'travelblog/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="post-detail">
+        <h2>{{ post.title }}</h2>
+        <p><strong>Author:</strong> {{ post.author.username }}</p>
+        <p><strong>Publish Date:</strong> {{ post.publish_date|date:"F d, Y" }}</p>
+        <p><strong>Location:</strong> {{ post.location }}</p>
+        <p><strong>Summary:</strong> {{ post.summary }}</p>
+        <div class="post-content">
+            {{ post.content|linebreaks }}
+        </div>
+        {% if post.images %}
+            <div>
+                <img src="{{ post.images.url }}" alt="{{ post.title }}">
+            </div>
+        {% endif %}
+        <p><strong>Tags:</strong> {{ post.tags }}</p>
+        <a href="{% url 'home' %}">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

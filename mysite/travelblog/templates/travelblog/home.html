@@ -31,7 +31,7 @@
                                             <h5>Posts</h5>
                                             <ul>
                                                 {% for post in city.posts %}
-                                                <li>{{ post.title }} by {{ post.author }} on {{ post.publish_date }}</li>
+                                                <li><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }} by {{ post.author }} on {{ post.publish_date }}</a></li>
                                                 {% endfor %}
                                             </ul>
                                         </div>
@@ -39,7 +39,7 @@
                                             <h5>Activities</h5>
                                             <ul>
                                                 {% for activity in city.activities %}
-                                                <li>{{ activity.name }} at {{ activity.location }}</li>
+                                                <li><a href="{% url 'activity_detail' pk=activity.pk %}">{{ activity.name }} at {{ activity.location }}</a></li>
                                                 {% endfor %}
                                             </ul>
                                         </div>
