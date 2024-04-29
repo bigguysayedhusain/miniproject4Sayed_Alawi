@@ -8,6 +8,7 @@
     <form class="post-detail" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
+        <div><a href="{% url 'add_city' %}" class="btn btn-outline-secondary btn-sm" role="button">+ Add City</a></div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

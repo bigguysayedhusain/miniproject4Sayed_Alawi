@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from .views import (HomeView, PostDetailView, ActivityDetailView, register, MyHomeView, PostCreateView, PostEditView,
-                    PostDeleteView, ActivityCreateView, ActivityUpdateView, ActivityDeleteView)
+                    PostDeleteView, ActivityCreateView, ActivityUpdateView, ActivityDeleteView, CityCreateView)
 
 
 urlpatterns = [
@@ -18,4 +18,5 @@ urlpatterns = [
     path('activity/add/', ActivityCreateView.as_view(), name='add_activity'),
     path('activity/edit/<int:pk>/', ActivityUpdateView.as_view(), name='edit_activity'),
     path('activity/delete/<int:pk>/', ActivityDeleteView.as_view(), name='delete_activity'),
+    path('add_city/', CityCreateView.as_view(), name='add_city'),
 ]

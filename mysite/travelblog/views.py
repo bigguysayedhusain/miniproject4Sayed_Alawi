@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.urls import reverse, reverse_lazy
 from .models import Country, City, Post, Activity
-from .forms import PostForm, ActivityForm
+from .forms import PostForm, ActivityForm, CityForm
 
 
 class HomeView(TemplateView):
@@ -87,6 +87,10 @@ class PostCreateView(LoginRequiredMixin, View):
             return redirect('post_detail', pk=post.pk)  # Redirect to the newly created post detail page
         return render(request, self.template_name, {'form': form})
 
+    def form_valid(self, form):  # This has to be removed when it doesn't add the country automatically
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 
 class PostEditView(LoginRequiredMixin, UpdateView):
     model = Post
@@ -130,6 +134,17 @@ class ActivityDeleteView(LoginRequiredMixin, DeleteView):
     model = Activity
     template_name = 'travelblog/activity_confirm_delete.html'
     success_url = reverse_lazy('myhome')
+
+
+class CityCreateView(CreateView):
+    model = City
+    form_class = CityForm
+    template_name = 'travelblog/city.html'
+    success_url = reverse_lazy('myhome')  # Redirect to 'home' after successfully creating a city.
+
+    def form_valid(self, form):
+        # Add any additional logic here if necessary
+        return super().form_valid(form)
 
 
 def register(request):
