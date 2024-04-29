@@ -1,0 +1,164 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header styles */
+h2 {
+    color: #0056b3; /* A slightly darker blue than Bootstrap's default blue */
+}
+
+/* Custom styles for forms */
+form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Custom button styles for specific actions */
+.btn-primary {
+    background-color: #007bff; /* Keeping it close to Bootstrap primary but can be customized */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Standard Bootstrap danger color for important actions like delete */
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Standard secondary button color in Bootstrap */
+}
+
+/* Specific styles for list items in MyHome page */
+ul {
+    padding-left: 20px; /* Adds padding to the list for better readability */
+}
+
+li {
+    margin-bottom: 10px; /* Adds space between list items */
+}
+
+/* Image styling ensuring responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Specific container adjustments */
+.container {
+    padding-top: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* subtle shadow for better focus */
+}
+
+/* Styling for the navigation bar */
+.navbar {
+    background-color: #f8f9fa; /* very light gray background */
+}
+
+/* Links in navbar and elsewhere */
+a {
+    color: #007bff;
+    text-decoration: none; /* Removes underline from links */
+}
+
+a:hover {
+    text-decoration: underline; /* Adds underline on hover for better interaction feedback */
+}
+
+/* Styling for the post and activity details */
+/* Additional style for form fields */
+.post-detail p {
+    margin-bottom: 1rem;
+}
+
+.post-detail label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.post-detail input[type="text"],
+.post-detail textarea,
+.post-detail select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.post-detail input[type="file"] {
+    margin-bottom: 1rem;
+}
+
+/* Style adjustments for the form buttons */
+.post-detail button {
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Ensuring the form itself is not too wide */
+.post-detail form {
+    max-width: 600px; /* Adjust as needed */
+    margin: auto;
+}
+
+/* Adding a background to the form area */
+.post-detail {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* Additional style for form fields in activity detail */
+.activity-detail p {
+    margin-bottom: 1rem;
+}
+
+.activity-detail label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.activity-detail input[type="text"],
+.activity-detail textarea,
+.activity-detail select,
+.activity-detail input[type="number"],
+.activity-detail input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+/* Style adjustments for the form buttons in activity detail */
+.activity-detail button {
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Ensuring the activity form itself is not too wide */
+.activity-detail form {
+    max-width: 600px; /* Adjust as needed */
+    margin: auto;
+}
+
+/* Adding a background to the activity form area */
+.activity-detail {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* Ensures that forms and their elements are not too wide on larger screens */
+form input, form select, form textarea, form button {
+    max-width: 100%;
+}
