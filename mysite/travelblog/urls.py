@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import register
-from .views import HomeView, PostDetailView, ActivityDetailView, MyHomeView
+from .views import (HomeView, PostDetailView, ActivityDetailView, register, MyHomeView, PostCreateView, PostEditView,
+                    PostDeleteView, ActivityCreateView, ActivityUpdateView, ActivityDeleteView)
 
 
 urlpatterns = [
@@ -12,4 +12,10 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='travelblog/registration/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
     path('myhome/', MyHomeView.as_view(), name='myhome'),
+    path('add_post/', PostCreateView.as_view(), name='add_post'),
+    path('post/edit/<int:pk>/', PostEditView.as_view(), name='edit_post'),
+    path('post/delete/<int:pk>/', PostDeleteView.as_view(), name='delete_post'),
+    path('activity/add/', ActivityCreateView.as_view(), name='add_activity'),
+    path('activity/edit/<int:pk>/', ActivityUpdateView.as_view(), name='edit_activity'),
+    path('activity/delete/<int:pk>/', ActivityDeleteView.as_view(), name='delete_activity'),
 ]

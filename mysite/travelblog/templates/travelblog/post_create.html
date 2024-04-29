@@ -1,0 +1,14 @@
+{% extends 'travelblog/base.html' %}
+
+{% block title %}Create a Post - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Add a New Post</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
