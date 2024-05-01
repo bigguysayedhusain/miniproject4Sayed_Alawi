@@ -1,5 +1,13 @@
-# TravelBlog - A Django Travel Blog Application
-### Developed by Sayed Husain Alawi
+### INF601 - Advanced Programming in Python
+### Sayed Husain Alawi
+### Mini Project 3
+
+
+# Mini Project 4
+
+
+
+## TravelBlog - A Django Travel Blog Application
 
 ## Description
 TravelBlog is a Django-based web application designed for travel enthusiasts to share their experiences and reviews 
